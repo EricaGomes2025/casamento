@@ -28,15 +28,16 @@
       color: #2a2a2a;
     }
 
-    .flower-left,
-    .flower-right {
-      position: fixed;
-      top: 0;
-      width: 350px;
-      height: auto;
-      z-index: 1;
-      pointer-events: none;
-    }
+.flower-left,
+.flower-right {
+  position: fixed;
+  top: 0;
+  width: 200px;
+  max-width: 40vw; /* adapta ao tamanho da tela */
+  height: auto;
+  z-index: 1;
+  pointer-events: none; /* evita bloqueio de clique em elementos atrás */
+}
 
     .flower-left {
       left: 0;
@@ -46,6 +47,15 @@
       right: 0;
       transform: scaleX(-1);
     }
+
+    @media (max-width: 600px) {
+  .flower-left,
+  .flower-right {
+    width: 120px;
+    max-width: 30vw;
+    top: 10px;
+  }
+}
 
     .countdown {
       display: flex;

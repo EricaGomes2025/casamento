@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirmação de Envio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input, textarea, button {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .modal-content p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content button {
+      background-color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Formulário com Confirmação</h1>
+
+  <form id="contactForm">
+    <input type="text" name="nome" placeholder="Seu nome" required>
+    <input type="email" name="email" placeholder="Seu email" required>
+    <textarea name="mensagem" placeholder="Mensagem" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <!-- MODAL DE CONFIRMAÇÃO -->
+  <div class="modal" id="modalConfirmacao">
+    <div class="modal-content">
+      <p>Sua mensagem foi enviada com sucesso! 🎉</p>
+      <button onclick="fecharModal()">Confirmar leitura</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const modal = document.getElementById("modalConfirmacao");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // COMENTADO para teste local - descomente para usar de verdade
+      /*
+      const data = new FormData(form);
+      fetch("https://formsubmit.co/ajax/ericagomesfernandesmed@gmail.com", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: data
+      })
+      .then(response => {
+        if (response.ok) {
+          form.reset();
+          modal.style.display = "flex";
+        } else {
+          alert("Erro ao enviar.");
+        }
+      })
+      .catch(error => {
+        alert("Erro de rede.");
+      });
+      */
+
+      // TESTE: mostra o modal mesmo sem enviar
+      modal.style.display = "flex";
+    });
+
+    function fecharModal() {
+      modal.style.display = "none";
+    }
+  </script>
+</body>
+</html>
